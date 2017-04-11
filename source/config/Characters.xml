@@ -1,0 +1,443 @@
+<!--
+=== Donut Character XML ===
+Block attributes (all attributes are optional):
+- name: Name to make characters more readable (not used anywhere)
+- shape: Mesh shape of block (currently: "cube", "sphere" or "cylinder")
+- rot: Rotation of block ("x, y, z" in degrees, only multiples of 90)
+- size: Size of the block ("x, y, z", applied _after_ rotation, i.e. x-size is always along the same axis, regardless of rotation)
+- dir: Direction the block is attached in, as seen from its parent block
+- color: Color of block (can be e.g. "#ffffff", "rgb(100%, 100%, 100%)" or "hsl(120, 100%, 100%)")
+- pattern: Pattern applied to the block (currently only "solid")
+-->
+<characters>
+	
+	<!--<character id="9">
+		<block name="body" shape="battery" rot="0, 0, 0" size="0.6, 0.6, 0.6" dir="0, 1, 0"/>
+	</character>
+	-->
+	
+	<character id="wobbly" sounds="fig1" speed="0.5" aggro="0.2" radius="1">
+		<legs
+			groundHeight="1.0" 
+			stepWidth="0.5"
+			
+			strideRadius="0.2" 
+			stepHeight="0.3" 
+			stepSpeed="2.5" 
+			
+			heave="0.05" 
+			surge="0.05" 
+			sway="0.1" 
+			
+			roll="5" 
+			pitch="6.0" 
+			yawFactor="0.2" 
+		/>
+		<block name="body" shape="sphere" rot="0, 0, 0" size="0.8, 0.8, 0.8" dir="0, 1, 0" color="#fed348" pattern="solid">
+			<block name="body" shape="sphere" rot="0, 0, 0" size="0.8, 0.8, 0.8" dir="0, 1, 0" color="#fff5d5" pattern="solid">
+				<block name="body" shape="sphere" rot="0, 0, 0" size="0.8, 0.8, 0.8" dir="0, 1, 0" color="#fed348" pattern="solid">
+					<block name="neck" shape="cylinder" rot="0, 0, 0" size="0.1, 1.5, 0.1" dir="0, 1, 0" color="#333333" pattern="solid">
+						<block name="head" shape="cube" rot="0, 0, 0" size="1.6, 1.2, 0.4" dir="0, 1, 0" color="#fff5d5" pattern="solid">
+							<face name="wobbly" size="1.6, 1.6, 1.6" dir="0, 0, 1" />
+							<block name="bombel" shape="sphere" rot="0, 0, 0" size="0.8, 0.8, 0.8" dir="0, 1, 0" color="#fed348" pattern="solid" />
+						</block>
+					</block>
+				</block>
+			</block>
+		</block>
+	</character>
+	
+	<character id="icecream" sounds="fig2"  speed="0.6" aggro="0.6" radius="1">
+		<legs
+			groundHeight="2.0" 
+			stepWidth="0.8"
+			
+			strideRadius="0.2" 
+			stepHeight="0.3" 
+			stepSpeed="2.5" 
+			
+			heave="0.05" 
+			surge="0.05" 
+			sway="0.02" 
+			
+			roll="3" 
+			pitch="2.0" 
+			yawFactor="0.02" 
+		/>
+		<block name="body" shape="cube" rot="0, 0, 0" size="2.4, 1.6, 1.6" dir="0, 1, 0" color="#54267a" pattern="solid" spring="false">
+			<block name="body" shape="cube" rot="0, 0, 0" size="2.4, 1.6, 1.6" dir="0, 1, 0" color="#f38918" pattern="solid" spring="false">
+				<block name="body" shape="cube" rot="0, 0, 0" size="2.4, 1.6, 1.6" dir="0, 1, 0" color="#fff5d5" pattern="solid" spring="false">
+					<face name="ice" size="2.0, 2.0, 2.0" dir="0, 0, 1" />
+	        	</block>
+	        </block>
+		</block>
+    </character>
+   
+    <character id="mrhat" sounds="fig3" speed="0.5" aggro="0.7" radius="1">
+		<legs
+			groundHeight="2.8" 
+			stepWidth="0.6"
+			
+			strideRadius="0.2" 
+			stepHeight="0.2" 
+			stepSpeed="2.0" 
+			
+			heave="0.125" 
+			surge="0.125" 
+			sway="0.1" 
+			
+			roll="3" 
+			pitch="6.0" 
+			yawFactor="0.02" 
+		/>
+		<block name="body" shape="cylinder" rot="0, 0, 0" size="2.4, 2.4, 2.4" dir="0, 1, 0" color="#51f0fe" pattern="solid">
+			<face name="hat" size="2.0, 2.0, 2.0" dir="0, 0, 1" />
+			<block name="hatRim" shape="cylinder" rot="0, 0, 0" size="3.2, 0.3, 3.2" dir="0, 1, 0" color="#1a1a1a" pattern="solid" >
+				<block name="hatTop" shape="cylinder" spring="false" rot="0, 0, 0" size="2.0, 0.8, 2.0" dir="0, 1, 0" color="#1a1a1a" pattern="solid" />
+			</block>
+		</block>
+    </character>
+    
+	<character id="mrcoin" sounds="fig1"  speed="0.5" aggro="1.0" radius="1">
+		<legs
+			groundHeight="3.0" 
+			stepWidth="0.8"
+			
+			strideRadius="0.2" 
+			stepHeight="1.0" 
+			stepSpeed="2.0" 
+			
+			heave="0.125" 
+			surge="0.125" 
+			sway="0.06" 
+			
+			roll="6.5" 
+			pitch="2.0" 
+			yawFactor="0.16" 
+		/>
+		<block name="body" shape="cylinder" rot="90, 0, 0" size="3.2, 3.2, 0.8" dir="0, 1, 0" color="#ae123e" pattern="solid">
+			<block name="hat" shape="cylinder" rot="90, 0, 0" size="0.8, 0.8, 0.4" dir="0, 1, 0" color="#f53f2a" pattern="solid"/>
+			<block name="armright" shape="cylinder" rot="90, 0, 0" size="0.8, 0.8, 0.4" dir="1, 0, 0" color="#f53f2a" pattern="solid"/>
+            <block name="armleft" shape="cylinder" rot="90, 0, 0" size="0.8, 0.8, 0.4" dir="-1, 0, 0" color="#f53f2a" pattern="solid"/>
+            <block name="face" shape="cylinder" rot="90, 0, 0" size="2.4, 2.4, 0.01" dir="0, 0, 1" color="#fffbe7" pattern="solid" spring="false">
+				<face name="coin" size="2.4, 2.4, 2.4" dir="0, 0, 1" />
+			</block>
+		</block>
+	</character>
+	
+	<character id="fakegg"  sounds="fig5" speed="0.5" aggro="0.2" radius="1">
+		<legs
+			groundHeight="1.2" 
+			stepWidth="2.0"
+			
+			strideRadius="0.2" 
+			stepHeight="0.2" 
+			stepSpeed="2.0" 
+			
+			heave="0.125"
+			surge="0.125" 
+			sway="0.06" 
+			
+			roll="3"
+			pitch="7.0" 
+			yawFactor="0.3" 
+		/>
+		<block name="body" shape="hemisphere" rot="0, 0, 0" size="4.0, 4.0, 4.0" dir="0, 1, 0" color="#FED348" pattern="solid">
+			<block name="collar" shape="cylinder" rot="0, 0, 0" size="6.0, 0.3, 6.0" dir="0, 1, 0" color="#f53f2a" pattern="solid">
+				<block name="face" shape="hemisphere" rot="0, 0, 0" size="2.4, 2.4, 2.4" dir="0, 1, 0" color="#fff5d5" pattern="solid">
+					<face name="egg" size="1.6, 1.6, 1.6" dir="0, 0, 1" />
+				</block>
+				<block name="top" shape="cylinder" rot="0, 0, 0" size="0.2, 2.0, 0.2" dir="0, 1, 0" color="#102562" pattern="solid" >
+					<block name="hat" shape="cylinder" rot="0, 0, 0" size="2.0, 0.2, 2.0" dir="0, 1, 0" color="#60b5f1" pattern="solid" />
+				</block>
+			</block>
+		</block>
+	</character>
+	
+	<character id="mrscool" sounds="fig6"  speed="0.7" aggro="0.8" radius="1">
+		<legs
+			groundHeight="1.0" 
+			stepWidth="0.5"
+			
+			strideRadius="0.2" 
+			stepHeight="0.3" 
+			stepSpeed="2.5" 
+			
+			heave="0.05" 
+			surge="0.05" 
+			sway="0.02" 
+			
+			roll="5" 
+			pitch="6.0" 
+			yawFactor="0.2" 
+		/>
+		<block name="body" shape="cylinder" rot="90, 0, 0" size="2.1, 3.0, 1.5" dir="0, 1, 0" color="#91e5f2" pattern="solid">
+			<block name="neck" shape="cylinder" rot="0, 0, 0" size="0.3, 0.8, 0.3" dir="0, 1, 0" color="#fed348" pattern="solid">
+				<block name="head" shape="cylinder" rot="90, 0, 0" size="1.6, 1.6, 0.4" dir="0, 1, 0" color="#fff09b" pattern="solid">
+					<block name="hair" shape="cylinder" rot="90, 0, 0" size="2.4, 2.4, 0.6" dir="0, 0, -1" color="#333333" pattern="solid" spring="false" />
+					<face name="squirt" size="1.6, 1.6, 1.6" dir="0, 0, 1" />
+				</block>
+			</block>
+		</block>
+	</character>
+	
+	<character id="mrroll" sounds="fig7"  speed="0.5" aggro="0.7" radius="1">
+		<legs
+			groundHeight="1.0" 
+			stepWidth="2.0"
+			
+			strideRadius="0.2" 
+			stepHeight="0.3" 
+			stepSpeed="2.5" 
+			
+			heave="0.05" 
+			surge="0.05" 
+			sway="0.02" 
+			
+			roll="5" 
+			pitch="6.0" 
+			yawFactor="0.2" 
+		/>
+			<block name="body" shape="cube" rot="0, 0, 90" size="2.8, 4, 2.4" dir="0, 1, 0" color="#0d1870" pattern="solid" spring="false">
+					<block name="earLeft" shape="cylinder" rot="0, 0, 90" size="0.3, 1.2, 1.2" dir="-1, 0, 0.2" color="#167232" pattern="solid" />
+					<block name="earRight" shape="cylinder" rot="0, 0, 90" size="0.3, 1.2, 1.2" dir="1, 0, 0.2" color="#167232" pattern="solid" />
+					<block name="head" shape="cylinder" rot="0, 0, 90" size="2.0, 2.4, 0.1" dir="0, 0.2, 1" color="#fffbe7" pattern="solid" spring="false">
+					<face name="roll" size="2.0, 2.0, 2.0" dir="0, 0, 1" />
+					<block name="nose" shape="cube" rot="90, 0, 0" size="0.3, 0.9, 0.6" dir="0, 0, 0.9" color="#000000" pattern="solid" />
+				</block>
+			</block>
+	</character>
+	
+	<character id="card" sounds="fig8" speed="0.8" aggro="0.3" radius="1">
+		<legs
+			groundHeight="2.0" 
+			stepWidth="1.0"
+			
+			strideRadius="0.2" 
+			stepHeight="0.3" 
+			stepSpeed="2.5" 
+			
+			heave="0.2" 
+			surge="0.2" 
+			sway="0.06" 
+			
+			roll="5" 
+			pitch="7.5" 
+			yawFactor="0.3" 
+		/>
+		<block name="body" shape="cube" rot="0, 0, 0" size="4.0, 5.0, 1.0" dir="0, 1, 0" color="#2c45fb" pattern="solid">
+            <block name="face" shape="cylinder" rot="90, 0, 0" size="2.4, 2.4, 0.01" dir="0, 0.1, 1" color="#fffbe7" pattern="solid" spring="false">
+				<face name="card" size="2.4, 2.4, 2.4" dir="0, 0, 1" />
+			</block>
+			<block name="body" shape="sphere" rot="0, 0, 0" size="0.8, 0.8, 0.8" dir="0, 1, 0" color="#fed348" pattern="solid" />
+		</block>
+	</character>
+	
+	<character id="doggy" sounds="fig9" speed="0.7" aggro="0.5" radius="1">
+		<legs
+			groundHeight="0.8" 
+			stepWidth="0.8"
+			
+			strideRadius="0.2" 
+			stepHeight="1.0" 
+			stepSpeed="2.0" 
+			
+			heave="0.2"
+			surge="0.2" 
+			sway="0.1"
+			
+			roll="10" 
+			pitch="6.0" 
+			yawFactor="0.2" 
+		/>
+		<block name="body" shape="cube" rot="0, 0, 0" size="3.2, 3.2, 4.0" dir="0, 1, 0" color="#f53f2a" pattern="solid">
+            <block name="tail" shape="cylinder" rot="90, 0, 0" size="0.3, 0.3, 4.8" dir="0, 0, -1" color="#102562" pattern="solid" >
+	            <block name="tailEnd" shape="cylinder" rot="90, 0, 0" size="2.0, 2.0, 0.2" dir="0, 0, -1" color="#d9252e" pattern="solid" />
+	        </block>
+	        <block name="neck" shape="cylinder" rot="90, 0, 0" size="2.4, 2.4, 1.2" dir="0, 0, 1" color="#d9252e" pattern="solid" >
+            	<block name="face" shape="cylinder" rot="90, 0, 0" size="2.4, 2.4, 0.01" dir="0, 0, 1" color="#fffbe7" pattern="solid" spring="false">
+					<face name="doggy" size="2.0, 2.0, 2.0" dir="0, 0, 1" />
+				</block>
+			</block>
+		</block>
+	</character>
+	
+	<character id="titi" sounds="fig11" speed="0.5" aggro="0.7" radius="1">
+		<legs
+			groundHeight="5.0" 
+			stepWidth="1.6"
+			
+			strideRadius="0.2" 
+			stepHeight="1.0" 
+			stepSpeed="2.0" 
+			
+			heave="0.2"
+			surge="0.2" 
+			sway="0.1"
+			
+			roll="10" 
+			pitch="7.5" 
+			yawFactor="0.2" 
+		/>
+		<block name="body" shape="cube" rot="0, 0, 0" size="3.6, 2.0, 3.2" dir="0, 1, 0" color="#106214" pattern="solid">            
+            <block name="face" shape="cylinder" rot="90, 0, 0" size="2.0, 1.6, 0.01" dir="0, 0, 1" color="#ffa55e" pattern="solid" spring="false">
+				<face name="titi" size="2.0, 2.0, 2.0" dir="0, 0, 1" />
+			</block>
+			<block name="earLeft" shape="cube" rot="0, 0, 0" size="1.6, 0.2, 1.2" dir="-1, -0.25, 0" color="#a6290c" pattern="solid">
+				<block name="earLeft" shape="cube" rot="0, 0, 0" size="0.8, 0.2, 1.2" dir="-1, 0, 0" color="#333333" pattern="solid" />
+			</block>
+			<block name="earRight" shape="cube" rot="0, 0, 0" size="1.6, 0.2, 1.2" dir="1, -0.25, 0" color="#a6290c" pattern="solid">
+				<block name="earRight" shape="cube" rot="0, 0, 0" size="0.8, 0.2, 1.2" dir="1, 0, 0" color="#333333" pattern="solid" />
+			</block>
+		</block>
+	</character>
+	
+	<character id="snake" sounds="fig13" speed="0.6" aggro="0.2" radius="1">
+		<legs
+			groundHeight="1.0" 
+			stepWidth="1.2"
+			
+			strideRadius="0.2" 
+			stepHeight="1.0" 
+			stepSpeed="2.0" 
+			
+			heave="0.2"
+			surge="0.2" 
+			sway="0.1"
+			
+			roll="10" 
+			pitch="7.5" 
+			yawFactor="0.2" 
+		/>
+		<block name="body" shape="cube" rot="0, 0, 0" size="2.4, 2.4, 4.0" dir="0, 1, 0" color="#0d1870" pattern="solid">
+            <block name="face" shape="cylinder" rot="90, 0, 0" size="2.0, 2.0, 0.8" dir="0, 0, 1.1" color="#fffbe7" pattern="solid">
+				<face name="snake" size="2.0, 2.0, 2.0" dir="0, 0, 1" />
+			</block>
+			<block name="body" shape="cube" rot="0, 0, 0" size="2.0, 1.6, 3.6" dir="0, 0, -1.1" color="#fffbe7" pattern="solid">
+           		<block name="body" shape="cube" rot="0, 0, 0" size="1.6, 1.2, 3.2" dir="0, 0, -1.1" color="#0d1870" pattern="solid">       
+           			<block name="body" shape="cube" rot="0, 0, 0" size="1.0, 0.4, 3.2" dir="0, 0, -1.1" color="#fffbe7" pattern="solid" />
+				</block>
+			</block>
+		</block>
+		
+	</character>
+	
+	<character id="giraffe" sounds="fig14" speed="0.5" aggro="0.5" radius="1">
+		<legs
+			groundHeight="2.4" 
+			stepWidth="1.0"
+			
+			strideRadius="0.2" 
+			stepHeight="1.0" 
+			stepSpeed="2.0" 
+			
+			heave="0.2"
+			surge="0.2" 
+			sway="0.1"
+			
+			roll="10" 
+			pitch="7.5" 
+			yawFactor="0.2" 
+		/>
+		<block name="body" shape="cube" rot="90, 0, 0" size="1.6, 1.6, 3.2" dir="0, 1, 0" color="#FED348" pattern="solid">
+			<block name="tail" shape="sphere" rot="0, 0, 0" size="1.2, 1.2, 1.2" dir="0, 0, -1" color="#ae123e" pattern="solid" />
+			<block name="tail" shape="sphere" rot="0, 0, 0" size="1.2, 1.2, 1.2" dir="1, 0, 0" color="#ae123e" pattern="solid" />
+			<block name="tail" shape="sphere" rot="0, 0, 0" size="1.2, 1.2, 1.2" dir="-1, 0, 0" color="#ae123e" pattern="solid" />
+			<block name="tail" shape="sphere" rot="0, 0, 0" size="1.2, 1.2, 1.2" dir="0, 0, 1" color="#ae123e" pattern="solid" />
+			<block name="neck" shape="cylinder" rot="0, 0, 0" size="0.4, 2.4, 0.4" dir="0, 1, 0.5" color="#fffbe7" pattern="solid">    
+				<block name="head" shape="cylinder" rot="90, 0, 0" size="2.0, 2.0, 1.6" dir="0, 0.9, 0.5" color="#351672" pattern="solid">   
+            		<block name="face" shape="cylinder" rot="90, 0, 0" size="1.5, 1.5, 0.1" dir="0, 0, 1" color="#ffeaca" pattern="solid" spring="false">
+						<face name="giraffe" size="1.6, 1.6, 1.6" dir="0, 0, 1" />
+					</block>
+				</block>
+			</block>
+		</block>
+		
+	</character>
+	
+	<character id="ryan" sounds="fig8" speed="0.8" aggro="0.3" radius="1">
+		<legs
+			groundHeight="3.0" 
+			stepWidth="1.0"
+			
+			strideRadius="0.2" 
+			stepHeight="0.3" 
+			stepSpeed="2.5" 
+			
+			heave="0.2" 
+			surge="0.2" 
+			sway="0.06" 
+			
+			roll="5" 
+			pitch="7.5" 
+			yawFactor="0.3" 
+		/>
+		<block name="body" shape="cube" rot="0, 0, 0" size="3.0, 4.6, 1.0" dir="0, 1, 0" color="#1a1a1a" pattern="solid">
+		
+			<block name="bum" shape="cube" rot="0, 0, 0" size="2.4, 4.0, 1.0" dir="0, 0, -0.8" color="#1a1a1a" pattern="solid">
+				<block name="bum" shape="cube" rot="0, 0, 0" size="2.0, 3.6, 1.0" dir="0, 0, -0.8" color="#1a1a1a" pattern="solid">
+					<block name="bum" shape="cube" rot="0, 0, 0" size="1.6, 3.2, 1.0" dir="0, 0, -0.8" color="#1a1a1a" pattern="solid">
+						<block name="bum" shape="cube" rot="0, 0, 0" size="1.2, 2.8, 1.0" dir="0, 0, -0.8" color="#1a1a1a" pattern="solid" />
+					</block>
+				</block>
+			</block>
+			<block name="armLeft" shape="cylinder" rot="0, 0, 90" size="2.0, 0.1, 0.1" dir="-1, -0.2, 0.2" color="#1b1b1b" pattern="solid" />
+			<block name="armRight" shape="cylinder" rot="0, 0, 90" size="2.0, 0.1, 0.1" dir="1, -0.2, 0.2" color="#1b1b1b" pattern="solid" />
+            <block name="face" shape="cube" rot="90, 0, 0" size="2.4, 2.4, 0.01" dir="0, 0.1, 1" color="#f8c2fd" pattern="solid" spring="false">
+				<face name="card" size="2.0, 2.0, 2.0" dir="0, 0, 1" />
+			</block>
+		</block>
+	</character>
+	
+	
+	<character id="suz" sounds="fig1"  speed="0.5" aggro="1.0" radius="1">
+		<legs
+			groundHeight="2.8" 
+			stepWidth="1.6"
+			
+			strideRadius="0.2" 
+			stepHeight="2.0" 
+			stepSpeed="3.0" 
+			
+			heave="0.125" 
+			surge="0.125" 
+			sway="0.06" 
+			
+			roll="6.5" 
+			pitch="2.0" 
+			yawFactor="0.16" 
+		/>
+		<block name="body" shape="pyramid" rot="0, 0, 0" size="4, 4, 4" dir="0, 1, 0" color="#de35e4" pattern="solid">
+            <block name="tutu" shape="cylinder" rot="90, 0, 0" size="4.5, 4.5, 0.4" dir="0, 0, -1" color="#ffeaca" pattern="solid" />
+
+			<block name="hair" shape="cylinder" rot="0, 0, 0" size="0.1, 0.8, 0.1" dir="0, 0.9, 0" color="#1c1c1c" pattern="solid">
+				<block name="bobble" shape="sphere" rot="0, 0, 0" size="0.8, 0.8, 0.8" dir="0, 1, 0" color="#2faed8" pattern="solid" />
+			</block>
+			<block name="head" shape="cylinder" rot="90, 0, 0" size="1.8, 1.8, 2.0" dir="0, -0.2, 0.3" color="#ffeaca" pattern="solid" spring="false"> 
+				<face name="coin" size="1.8, 1.8, 1.8" dir="0, 0, 1" />
+			</block>
+		</block>
+	</character>
+	
+	<character id="donut" eligible="false" speed="15" turnRoll="0.4" aggro="1" radius="0.75">
+		<legs
+			groundHeight="0.8" 
+			stepWidth="0.5"
+			
+			strideRadius="0.2" 
+			stepHeight="1.0" 
+			stepSpeed="2.0" 
+			
+			heave="0.2"
+			surge="0.2" 
+			sway="0.02"
+			
+			roll="3" 
+			pitch="2.5" 
+			yawFactor="0.02" 
+		/>
+		<block name="donutMesh" shape="donut" dir="0, 1, 0" texture="colors" />
+			
+	</character>
+	
+</characters>

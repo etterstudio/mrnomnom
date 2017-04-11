@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mr Nom Nom</title>
+
+<!--    
+MIT License
+
+Copyright (c) 2017 Etter Studio Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+	<!-- Origin Trial Token, feature = WebVR, origin = https://mrnmnm.com, expires = 2017-05-15 -->
+	<meta http-equiv="origin-trial" data-feature="WebVR" data-expires="2017-05-15" content="Ah20T31uEanei7Nbz6qm+xqPWWZ8Gdmy1jPYEeHuEIVx7um8vCRuf79QeMJ+b7kXGlXwaf3tkgEX/gccZHbIlw0AAABJeyJvcmlnaW4iOiJodHRwczovL21ybm1ubS5jb206NDQzIiwiZmVhdHVyZSI6IldlYlZSIiwiZXhwaXJ5IjoxNDk0ODc5MDQ2fQ==">
+	
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        color: #fff;
+        margin: 0px;
+        padding: 0;
+        overflow: hidden;
+        font-family: sans-serif;
+        line-height: 1.15;
+    }
+
+    a, a:visited, a:active {
+        color: #1e73ac;
+        text-decoration: none;
+    }
+
+    p {
+        margin:0;
+    }
+
+    canvas {
+        position: fixed;
+    }
+
+    .text-small {
+        display: inline-block;
+        letter-spacing: 0;
+        font-size: 0.9em;
+        line-height: 160%;
+        text-align: left;
+        margin: 1em 0;
+    }
+
+    .splash {
+        background-color: black;
+        text-align: center;
+        top: 0px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        position: fixed;
+    }
+
+    .splash.hidden {
+        display: none;
+    }
+
+    .splash .head {
+        text-align: left;
+        font-weight: 100;
+        margin: 0px;
+    } 
+
+    .splash .content {
+        max-width: 50%;
+        max-height: 80%;
+        overflow: auto;
+    }
+
+    .close {
+        position: fixed;
+        width: 32px;
+        height: 32px;
+        opacity: 0.3;
+    }
+
+    .close:hover {
+        opacity: 1;
+    }
+
+    .close:before, .close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #FFF;
+    }
+
+    .close:before {
+        transform: rotate(45deg);
+    }
+
+    .close:after {
+        transform: rotate(-45deg);
+    }
+
+    .button {
+        cursor: pointer;
+    }
+    
+    #notice {
+        background-color: #37008a;
+    }
+
+    #ui {
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        color: white;
+        text-align: center;
+        width:100%;
+        transition: opacity 0.5s, visibility 0.5s;
+        opacity: 1;
+        z-index: 100;
+    }
+    
+    #ui.hidden {
+        position: absolute;
+        bottom: 32px;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    #about-button {
+        position: fixed;
+        right: 21px;
+        top: 13px;
+        width: 30px;
+    }
+
+    #about {
+        background-color: black;
+    }
+
+    .about-check-out {
+        text-align: left; 
+    }
+
+    #about-xbutton {
+        font-size: 20px;
+        border: none;
+        position: fixed;
+        top: 12px;
+        right: 20px;
+    }
+
+    #prompt {
+        letter-spacing: 4px;
+        font-size: 18px;
+    }
+    
+    .tagline {
+        width: 90%;
+    }
+    
+    #entervr-button {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 35vw;
+    }
+    
+    #entervr-button button {
+        position: absolute;
+        bottom: 0; left: 50%;
+        transform: translate(-50%, 0);
+        min-width: 230px;
+    }
+
+    #chromeExperiment img, #infoButton img, #about-button img {
+        width: 100%;
+    }
+
+    #chromeExperiment {
+        position: fixed;
+        left: 15px;
+        bottom: 10px;
+        width: 140px;
+    }
+    
+    #infoButton {
+        position: fixed;
+        right: 15px;
+        bottom: 10px;
+        width: 140px;
+    }
+    
+    /*
+    Intro sequence:
+    0.0 - 0.5 /  0.0% -  12.5% : Fade in etter
+    2.5 - 3.0 / 62.5% -  75.0% : Fade out etter
+    2.8 - 3.7 / 70.0% -  92.5% : Change background color
+    3.5 - 4.0 / 87.5% - 100.0% : Fade in mrnomnom
+    */
+    #loader {
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: 100;
+        background-color: #fff;
+        opacity: 1;
+        animation: 4.0s linear 0s both loader;
+        transition: all 0.5s;
+        -webkit-user-select: none;
+        user-select: none;
+        pointer-events: none;
+    }
+    #loader img {
+        -webkit-user-drag: none;
+        user-drag: none;
+    }
+    @keyframes loader {
+        0%    { background-color: #000; }
+        70.0% { background-color: #000; }
+        92.5% { background-color: #37008a; }
+        100%  { background-color: #37008a; }
+    }
+    .hideLoader#loader {
+        animation: 0.5s linear 0s both hideLoader;
+    }
+    @keyframes hideLoader {
+        0%    { background-color: #37008a; }
+        100%  { background-color: transparent; }
+    }
+    .removeLoader#loader {
+        opacity: 0;
+    }
+    .logos {
+        position: absolute;
+        margin: auto; 
+        left: 0; right: 0; top: 0; bottom: 10%;
+        width: 50%;
+    }
+    .logos img, .bar {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+    .etter {
+        animation: 4.0s linear 0s both etter;
+    }
+    @keyframes etter {
+        0%    { opacity: 0; }
+        12.5% { opacity: 1; }
+        62.5% { opacity: 1; }
+        75.0% { opacity: 0; }
+        100%  { opacity: 0; }
+    }
+    .nomnom {
+        animation: 4.0s linear 0s both nomnom;
+    }
+    @keyframes nomnom {
+        0%    { opacity: 0; }
+        87.5% { opacity: 0; }
+        100%  { opacity: 1; }
+    }
+    .bar {
+        width: 73.5%;
+        height: 9vw;
+        padding-top: 5%;
+    }
+    .bar .fill {
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 0%;
+        height: 10%;
+        background-color: #fff;
+        transition: background-color 0.5s;
+    }
+    .hideLoader .bar .fill {
+        background-color: transparent;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .logos {
+            width: 75%;
+            bottom: 20%;
+        }
+        .bar {
+            height: 13vw;
+        }
+        #entervr-button {
+            height: 55vw;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        .logos {
+            width: 100%;
+        }
+        #prompt {
+            width: 75%;
+        }
+        .bar {
+            height: 18vw;
+        }
+        #entervr-button {
+            height: 80vw;
+        }
+        .splash .content {
+            max-width: 80%;
+        }
+        #chromeExperiment img, #infoButton img {
+        	width: 70%;
+    	}
+    }
+
+    @media only screen and (orientation: landscape) and (max-height: 500px) {
+        .logos {
+            bottom: 20%;
+        }
+        #chromeExperiment img, #infoButton img {
+        	width: 70%;
+    	}
+    }
+    
+    </style>
+</head>
+
+<body>
+    <div id="loader">
+        <div class="logos">
+            <img class="etter" src="img/intro_etterstudio.png" />
+            <img class="nomnom" src="img/intro_mrnomnom.png" />
+            <div class="bar"><div class="fill"></div></div>
+        </div>
+    </div>
+
+    <div id="notice" class="splash hidden">
+         <div class="content">
+            <h1 class="head">Get ready!</h1>
+            <p class="text-small">
+                Put your phone into your VR headset and wait for the countdown to begin.
+            </p>
+        </div>
+    </div>
+
+    <div id="about" class="splash hidden">
+        <div class="content">
+            <h1 class="head">
+            	Mr Nom Nom
+            </h1>
+            <p class="text-small">
+                by Etter Studio<br>
+                <br>
+                A small WebVR game about a tasty donut and his hungry friends. By collecting the balls of red yarn, Mr. Nom Nom extends the length of his fashionable scarf and uses it to prevent his delicious demise at the mouths of his munching friends.<br>
+                <br>
+                For this WebVR experiment, Etter Studio developed a code based character animation tool which allows to quickly build any 3D character by combining basic geometric shapes. All physics behaviours and animations are procedurally generated. More about its development <a href="http://etterstudio.com/en/mrnomnom.php" target="_blank">here</a>.<br>
+                <br>
+            	Technologies used: <a href="https://threejs.org/" target="_blank">three.js</a>, <a href="https://github.com/joshforisha/fast-simplex-noise-js" target="_blank">fast-simplex-noise</a><br>
+            	<br>
+            	Check out other WebVR Experiments <a href="https://webvrexperiments.com" target="_blank">here</a>.
+            </p>
+            <div class="close xbutton button" id="about-xbutton"></div>
+        </div><!--
+        <div id="infoButton" class="button">
+            <a href="http://etterstudio.com/en/mrnomnom.php" target="_blank">
+                <img src="img/etterstudio_logo_200px.png" />
+            </a>
+        </div>-->
+    </div>
+
+    <div id="ui" class="hidden">
+        <div id="about-button" class="button">
+            <img src="img/info_btn@1.png"></img>
+        </div>
+        <div id="prompt" class="logos">
+            <img class="tagline" src="img/intro_prompt.png" />
+            <div id="entervr-button" onclick="ga('send', 'event', 'button', 'click', 'WebVR_button');"></div>
+        </div>
+        <div id="chromeExperiment" class="button">
+            <a href="https://webvrexperiments.com/" target="_blank">
+                <img src="img/webVR_experiment.svg" />
+            </a>
+        </div>
+        <div id="infoButton" class="button">
+            <a href="http://etterstudio.com/en/mrnomnom.php" target="_blank">
+                <img src="img/etterstudio_logo_200px.png" />
+            </a>
+        </div>
+    </div>
+
+    <script>
+    var loader = document.getElementById('loader');
+    var nomnom = document.getElementsByClassName('nomnom')[0];
+    var fill = document.getElementsByClassName('fill')[0];
+    window.nomloader = {
+        // --- Configuration ---
+
+        // Maximum progress that is simulated waiting for main.js to load
+        simulationMax: 0.25,
+        // Duration over which simulationMax is simulated
+        simulationTime: 20000,
+        // The minimum time the title is displayed
+        titleMinDuration: 3000,
+
+        // --- Public ---
+
+        // The current progress, < 0 means the progress bar hasn't appeared yet
+        progress: -1,
+        // Callback called when the progress bar appeared
+        onProgressReady: null,
+        // Stop the simulation when main.js is ready to take over
+        stopSimulation: function() {
+            this.simulated = false;
+        },
+        // Update the progress bar's position
+        setProgress: function(progress) {
+            if (this.titleStartTime < 0)
+                return;
+            this.progress = progress;
+            this.fill.style.width = (progress * 100) + '%';
+        },
+        // Loading complete, fade out background and loading bar
+        complete: function() {
+            loader.classList.add('hideLoader');
+        },
+        // Fade out title
+        hide: function() {
+            loader.classList.add('removeLoader');
+        },
+        // Fade the title back in
+        show: function() {
+            loader.classList.remove('removeLoader');
+        },
+        // Enforce the minimum time of the title
+        delayStart: function(callback) {
+            var now = performance.now();
+            if (this.titleStartTime < 0) {
+                this.delayStartCallback = callback;
+            } else if (now < this.titleStartTime + this.titleMinDuration) {
+                var remaining = this.titleStartTime + this.titleMinDuration - now;
+                setTimeout(callback, remaining);
+            } else {
+                callback();
+            }
+        },
+
+        // --- Internal ---
+        
+        simulated: true,
+        fill: fill,
+        delayStartCallback: null,
+        titleStartTime: -1,
+        startTitle: function() {
+            if (this.titleStartTime >= 0)
+                return;
+            this.titleStartTime = performance.now();
+            this.setProgress(0);
+            this.updateSimulation(this.titleStartTime);
+            if (this.delayStartCallback) {
+                this.delayStart(this.delayStartCallback);
+                this.delayStartCallback = null;
+            }
+        },
+        updateSimulation: function(t) {
+            if (!this.simulated)
+                return;
+            t -= this.titleStartTime;
+            var p = Math.max(Math.min(t / this.simulationTime, 1) * this.simulationMax, 0);
+            this.setProgress(p);
+            requestAnimationFrame(this.updateSimulation.bind(this));
+        }
+    };
+    
+    nomnom.addEventListener('animationend', function(event) {
+        if (window.nomloader) {
+            window.nomloader.startTitle();
+            if (window.nomloader.onProgressReady) {
+                window.nomloader.onProgressReady();
+                window.nomloader.onProgressReady = null;
+            }
+        }
+    });
+
+    var aboutScreen = document.getElementById('about');
+    var aboutButton = document.getElementById('about-button');
+    aboutButton.addEventListener('click', function(event) {
+        aboutScreen.classList.remove('hidden');
+    });
+    var aboutClose = document.getElementById('about-xbutton');
+    aboutClose.addEventListener('click', function(event) {
+        aboutScreen.classList.add('hidden');
+    });
+    </script>
+    <script src="main.js"></script>
+    
+    <!-- google analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-91838537-2', 'auto');
+        ga('send', 'pageview');
+        
+        navigator.getVRDisplays().then(function(displays) {
+            ga('send', 'event', {
+                eventCategory: 'VR',
+                eventAction: 'Headset',
+                eventLabel: (displays.length > 0 ? displays[0].displayName : 'None'),
+                eventValue: displays.length
+            });
+        });
+	</script>
+
+</body>
+
+</html>

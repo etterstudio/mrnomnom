@@ -1,0 +1,39 @@
+{
+  "name": "donut",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "donche/donut",
+  "main": "source/main.js",
+  "scripts": {
+    "filesizes": "file-size-report -p dist -o Filesizes.js && sed -i.bck '1s;^;export default ;' Filesizes.js && rm Filesizes.js.bck",
+    "effects": "audiosprite -o dist/audio/effects -u audio/ -e m4a,ogg -f howler -r 48000 -c 1 assets/sounds_inuse/effects/* && mv dist/audio/effects.json source/config/Sprite_Effects.js && sed -i.bck '1s;^;export default ;' source/config/Sprite_Effects.js && rm source/config/Sprite_Effects.js.bck",
+    "sounds": "audiosprite -o dist/audio/sounds -u audio/ -e m4a,ogg -f howler -r 48000 -c 2 assets/sounds_inuse/sounds/* && mv dist/audio/sounds.json source/config/Sprite_Sounds.js && sed -i.bck '1s;^;export default ;' source/config/Sprite_Sounds.js && rm source/config/Sprite_Sounds.js.bck",
+    "build": "npm run filesizes && rollup -c",
+    "dev": "rollup -c -w",
+    "build-uglify": "npm run build && uglifyjs dist/main.js -cm --in-source-map dist/main.js.map --source-map dist/main.js.map --source-map-url main.js.map -o dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Etter Studio",
+  "license": "MIT",
+  "devDependencies": {
+    "file-size-report": "^1.0.2",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-includepaths": "^0.1.6",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-watch": "^2.5.0",
+    "rollup": "^0.41.1",
+    "uglify-js": "^2.7.3",
+    "x2js": "^3.0.1"
+  },
+  "dependencies": {
+    "audiosprite": "^0.6.0",
+    "dat.gui": "github:dataarts/dat.gui",
+    "fast-simplex-noise": "^2.2.0",
+    "stats.js": "^0.16.0",
+    "three": "github:sttz/three.js#audio_duration",
+    "url-search-params": "^0.6.1",
+    "web-audio-ios": "^1.0.2",
+    "webvr-polyfill": "^0.9.25"
+  }
+}

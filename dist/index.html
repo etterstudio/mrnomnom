@@ -37,6 +37,9 @@ SOFTWARE.
 	<!-- Origin Trial Token, feature = WebVR, origin = https://mrnmnm.com, expires = 2017-05-15 -->
 	<meta http-equiv="origin-trial" data-feature="WebVR" data-expires="2017-05-15" content="Ah20T31uEanei7Nbz6qm+xqPWWZ8Gdmy1jPYEeHuEIVx7um8vCRuf79QeMJ+b7kXGlXwaf3tkgEX/gccZHbIlw0AAABJeyJvcmlnaW4iOiJodHRwczovL21ybm1ubS5jb206NDQzIiwiZmVhdHVyZSI6IldlYlZSIiwiZXhwaXJ5IjoxNDk0ODc5MDQ2fQ==">
 	
+	<!-- Origin Trial Token, feature = WebVR, origin = https://mrnmnm.com, expires = 2017-06-12 -->
+	<meta http-equiv="origin-trial" data-feature="WebVR" data-expires="2017-06-12" content="ArGyX0t/7iF6fLPzdAJwU537TjZRGx8I1I5xZq1EmNbXXz1uiJut4N+u6J4Oqi6xyT3S6xUR6sMb6aFRKs1cdQsAAABceyJvcmlnaW4iOiJodHRwczovL21ybm1ubS5jb206NDQzIiwiZmVhdHVyZSI6IldlYlZSIiwiZXhwaXJ5IjoxNDk3MzEyMDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+
     <style>
     * {
         box-sizing: border-box;
@@ -354,6 +357,22 @@ SOFTWARE.
         	width: 70%;
     	}
     }
+
+    @media only screen and (max-height: 400px) {
+        #entervr-button {
+            height: 50vw;
+        }
+    }
+    @media only screen and (max-height: 450px) and (min-width: 600px) {
+        #entervr-button {
+            height: 45vw;
+        }
+    }
+    @media only screen and (max-height: 450px) and (min-width: 700px) {
+        #entervr-button {
+            height: 40vw;
+        }
+    }
     
     </style>
 </head>
@@ -386,7 +405,7 @@ SOFTWARE.
                 <br>
                 A small WebVR game about a tasty donut and his hungry friends. By collecting the balls of red yarn, Mr. Nom Nom extends the length of his fashionable scarf and uses it to prevent his delicious demise at the mouths of his munching friends.<br>
                 <br>
-                For this WebVR experiment, Etter Studio developed a code based character animation tool which allows to quickly build any 3D character by combining basic geometric shapes. All physics behaviours and animations are procedurally generated. More about its development <a href="http://etterstudio.com/en/mrnomnom.php" target="_blank">here</a>.<br>
+                For this WebVR experiment, Etter Studio developed a code based character animation tool which allows to quickly build any 3D character by combining basic geometric shapes. All physics behaviours and animations are procedurally generated. Find the source code of Mr Nom Nom <a href="https://github.com/etterstudio/mrnomnom" target="_blank">here</a> and more about its development <a href="http://etterstudio.com/en/mrnomnom.php" target="_blank">here</a>.<br>
                 <br>
             	Technologies used: <a href="https://threejs.org/" target="_blank">three.js</a>, <a href="https://github.com/joshforisha/fast-simplex-noise-js" target="_blank">fast-simplex-noise</a><br>
             	<br>

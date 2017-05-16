@@ -354,7 +354,7 @@ Block attributes (all attributes are optional):
 		</block>
 		
 	</character>
-	
+	<!--
 	<character id="ryan" sounds="fig8" speed="0.8" aggro="0.3" radius="1">
 		<legs
 			groundHeight="3.0" 
@@ -418,7 +418,7 @@ Block attributes (all attributes are optional):
 			</block>
 		</block>
 	</character>
-	
+	-->
 	<character id="donut" eligible="false" speed="15" turnRoll="0.4" aggro="1" radius="0.75">
 		<legs
 			groundHeight="0.8" 

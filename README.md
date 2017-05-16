@@ -38,6 +38,6 @@ In March 2017 the game Mr Nom Nom was released alongside other WebVR experiments
 
 ### Contributors
 - [Adrian Stutz](https://github.com/sttz)
-- [Eugene Krivoruchko](https://github.com/ekrivoruchko)
+- [Eugene Krivoruchko](https://github.com/crookookoo)
 - [Sascha Haus](https://github.com/saschahaus)
 - [Ilmari Heikkinen](https://github.com/kig)

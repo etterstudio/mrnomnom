@@ -2,7 +2,9 @@
 # [Mr Nom Nom](https://mrnmnm.com)
 
 ## A small WebVR game about a donut and his hungry friends.
-
+  
+Notice: As of 9/11/2018, the WebVR API is no longer supported so some features may not work as intended.
+  
 ![mrnomnom](https://github.com/etterstudio/mrnomnom/raw/master/dist/img/mrnomnom.png)
 
 Mr Nom Nom was created by the desire to build something simple, for everyone to have fun with. A silly game, that works across as many platforms as possible, from Cardboard to the latest high-end device. 
